@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/12/03 18:21:26 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/12/06 19:15:20 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLXLIBS) -o $(NAME)
 
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
