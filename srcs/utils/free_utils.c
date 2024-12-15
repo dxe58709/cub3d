@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 21:34:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 22:39:57 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/09/14 22:03:17 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/12/15 20:02:59 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	free_tab(void **tab)
 {
-	t_game	game;
-	t_temp	temp;
+	size_t	i;
 
-	init_temp(&temp);
-	if (check_map(argc, argv, &temp))
-		return (ERROR);
-	initialize_game(&game, argv[1]);
-	init_game(&game, &temp);
-	render_raycasting(&game);
-	set_hook(&game);
-	mlx_loop(game.mlx);
-	free_exit(&game, SUCCESS);
-	return (SUCCESS);
+	i = 0;
+	if (tab)
+	{
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		free(tab);
+		tab = NULL;
+	}
+}
+
+void	free_all(char **tab, char **spline, char *line, char *message)
+{
+	if (tab)
+		free_tab((void **)tab);
+	if (spline)
+		free_tab((void **)spline);
+	if (line)
+		free(line);
+	free_exit(NULL, err_msg(message, 1));
 }

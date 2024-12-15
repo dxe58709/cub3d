@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:03:17 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 18:02:13 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:23:33 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ void	put_tab_arr(int **tab_arr, int size, int max, char *name)
 
 void	put_ray(t_ray *ray)
 {
-	printf("RAY[%lf]: map(%d, %d) step(%d, %d) dir(%lf, %lf) deltadist(%lf,\
- %lf) sidedist(%lf, %lf) wall(%d %lf) draw(%d ~ %d) wall_x(%lf)\n",
+	printf("RAY[%lf]: map(%d, %d) direction(%d, %d) dir(%lf, %lf) cell_dist(%lf,\
+ %lf) distance(%lf, %lf) wall(%d %lf) draw(%d ~ %d) wall_x(%lf)\n",
 		ray->camera_x,
 		ray->map_x,
 		ray->map_y,
-		ray->step_x,
-		ray->step_y,
-		ray->vec_dir_x,
-		ray->vec_dir_y,
-		ray->deltadist_x,
-		ray->deltadist_y,
-		ray->sidedist_x,
-		ray->sidedist_y,
+		ray->x_direction,
+		ray->y_direction,
+		ray->x_vec_dir,
+		ray->y_vec_dir,
+		ray->x_cell_dist,
+		ray->y_cell_dist,
+		ray->distance_x,
+		ray->distance_y,
 		ray->wall_height,
 		ray->wall_dist,
 		ray->wall_start_y,
@@ -72,8 +72,8 @@ void	put_ray(t_ray *ray)
 
 void	put_tex_ray(t_tex_ray *tex_ray)
 {
-	printf("TEX_RAY xy(%d %d) step(%lf) pos(%lf)\n", tex_ray->x, tex_ray->y,
-		tex_ray->step, tex_ray->pos);
+	printf("TEX_RAY xy(%d %d) next(%lf) pos(%lf)\n", tex_ray->x, tex_ray->y,
+		tex_ray->next, tex_ray->pos);
 }
 
 void	print_mapinfo(t_mapinfo *mapinfo)
@@ -99,8 +99,8 @@ void	print_mapinfo(t_mapinfo *mapinfo)
 // 	printf("\n################## player ##################\n");
 // 	printf("direction\t: \'%c\'\n", player->direction);
 // 	printf("map_xy\t\t: X[%lf] Y[%lf]\n", player->map_x, player->map_y);
-// 	printf("vec_xy_dir\t: X[%lf] Y[%lf]\n", player->vec_dir_x,
-// 		player->vec_dir_y);
+// 	printf("vec_xy_dir\t: X[%lf] Y[%lf]\n", player->x_vec_dir,
+// 		player->y_vec_dir);
 // 	printf("vec_xy_plane\t: X[%lf] Y[%lf]\n", player->vec_plane_x,
 // 		player->vec_plane_y);
 // }

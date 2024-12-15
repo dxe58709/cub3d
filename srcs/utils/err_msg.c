@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   err_msg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:03:17 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 18:01:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:08:21 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	err_msg(char *msg, int status)
 {
-	ft_putstr_fd("Error\n", status);
-	if (msg)
-		ft_putstr_fd(msg, status);
-	ft_putstr_fd("\n", status);
+	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
 	return (status);
 }

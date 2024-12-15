@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   floor.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:00:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:59:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:52:17 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/**
- * 
- */
 int	get_ceiling_color(t_game *game)
 {
 	int	color;
@@ -24,9 +21,6 @@ int	get_ceiling_color(t_game *game)
 	return (color);
 }
 
-/**
- * 
- */
 int	get_floor_color(t_game *game)
 {
 	int	color;

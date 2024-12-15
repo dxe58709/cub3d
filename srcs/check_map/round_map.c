@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hanarekojima.c                                     :+:      :+:    :+:   */
+/*   round_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:55:45 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:03:43 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	validate_round_player(char **temp_map)
 			{
 				fill_round(temp_map, i, j, round);
 				if (ft_strchr(round, ' ') || ft_strchr(round, '$'))
-					return (matomete_free(temp_map, NULL, NULL, ERR_PLAYER), 1);
+					return (free_all(temp_map, NULL, NULL, ERR_PLAYER), 1);
 			}
 		}
 	}
@@ -63,7 +63,7 @@ bool	validate_round_space(char **temp_map)
 			{
 				fill_round(temp_map, i, j, round);
 				if (ft_strchr(round, '0'))
-					return (matomete_free(temp_map, NULL, NULL, ERR_SPACE), 1);
+					return (free_all(temp_map, NULL, NULL, ERR_SPACE), 1);
 			}
 		}
 	}
@@ -86,7 +86,7 @@ bool	validate_round_zero(char **temp_map)
 			{
 				fill_round(temp_map, i, j, round);
 				if (ft_strchr(round, '$') || ft_strchr(round, ' '))
-					return (matomete_free(temp_map, NULL, NULL, ERR_ZERO), 1);
+					return (free_all(temp_map, NULL, NULL, ERR_ZERO), 1);
 			}
 		}
 	}

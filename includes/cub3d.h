@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 15:17:26 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:51:10 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,69 +29,56 @@
 
 # define WIN_HEIGHT 480
 # define WIN_WIDTH 640
-// # define WIN_HEIGHT 200
-// # define WIN_WIDTH 300
+# define FOV 0.66
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.05
 # define TEX_SIZE 64
-# define VIEWING_ANGLE 0.66 /** 視野角 */
-# define MOVESPEED 0.05
-# define ROTSPEED 0.05
 
-# define WALL_C '1'
+# define MAP_WALL '1'
 
 # define ERR_USAGE "Usage: ./cub3D <path/to/map.cub>"
-# define ERR_MALLOC ": malloc() failed."
+# define ERR_MALLOC "Failed to malloc"
 # define ERR_ARGMAP "Confirm map name or map path"
 # define ERR_MSG "INVALID"
 # define ERR_MAP "Invalid map content"
-# define ERR_ISLAND "Not allow to exist hanarekojima"
 # define ERR_RGB "Invalid RGB"
 # define ERR_DIRECTION "Invalid Direction"
-# define ERR_DIRGB "too few DIRGB information"
+# define ERR_INFO "too few map properties infomation"
 # define ERR_PLAYER "Invalid Player"
 # define ERR_SPACE "' ' need walls"
 # define ERR_ZERO "'0' need walls"
-# define ERR_MLX "MLX"
 
-/**
- * Pixel editable image information.
- */
 typedef struct s_img
 {
-	void		*img;
-	int			*addr;
-	int			pixel_bits;
-	int			size_line;
-	int			endian;
+	void	*img;
+	int		*addr;
+	int		bits_par_pixel;
+	int		bytes_line;
+	int		endian;
 }	t_img;
 
-/**
- * Texture information.
- */
 typedef struct s_texinfo
 {
-	int			**tex_north;
-	int			**tex_south;
-	int			**tex_west;
-	int			**tex_east;
-	int			size;
+	int		**tex_north;
+	int		**tex_south;
+	int		**tex_west;
+	int		**tex_east;
+	int		size;
 }	t_texinfo;
 
-/**
- * Map file information.
- */
 typedef struct s_mapinfo
 {
-	char		*path;
-	char		*no_path;
-	char		*so_path;
-	char		*we_path;
-	char		*ea_path;
-	char		**map;
-	int			map_height;
-	int			map_width;
-	int			floor_rgb[3];
-	int			ceiling_rgb[3];
-	int			line_count;
+	char	*path;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	char	**map;
+	int		map_height;
+	int		map_width;
+	int		floor_rgb[3];
+	int		ceiling_rgb[3];
+	int		line_count;
 }	t_mapinfo;
 
 /**
@@ -102,9 +89,7 @@ Screen coordinates.
  v
  y (positive direction)
  */
-/**
- * Ray information used for raycasting.
- */
+
 typedef struct s_ray
 {
 	double		camera_x;
@@ -113,53 +98,43 @@ typedef struct s_ray
 	int			map_x;
 	int			map_y;
 
-	int			step_x;
-	int			step_y;
+	int			x_direction;
+	int			y_direction;
 
-	double		vec_dir_x;
-	double		vec_dir_y;
+	double		x_vec_dir;
+	double		y_vec_dir;
 
-	double		sidedist_x;
-	double		sidedist_y;
+	double		distance_x;
+	double		distance_y;
 
-	double		deltadist_x;
-	double		deltadist_y;
+	double		x_cell_dist;
+	double		y_cell_dist;
 
 	int			wall_height;
 	double		wall_dist;
-
 	int			wall_start_y;
 	int			wall_end_y;
-
 	double		wall_x;
 }	t_ray;
 
-/**
- *
- */
 typedef struct s_tex_ray
 {
 	int			x;
 	int			y;
-
-	double		step;
+	double		next;
 	double		pos;
-
 }	t_tex_ray;
 
 typedef struct s_player
 {
 	char		direction;
-
 	double		map_x;
 	double		map_y;
-
-	double		vec_dir_x;
-	double		vec_dir_y;
-
+	double		x_vec_dir;
+	double		y_vec_dir;
 	double		vec_plane_x;
 	double		vec_plane_y;
-}				t_player;
+}	t_player;
 
 typedef struct s_game
 {
@@ -167,9 +142,7 @@ typedef struct s_game
 	void		*win;
 	int			win_height;
 	int			win_width;
-
 	int			**view_pixels;
-
 	t_texinfo	texinfo;
 	t_mapinfo	mapinfo;
 	t_player	player;
@@ -186,12 +159,12 @@ typedef struct s_temp
 	int			player_mapy;
 	int			texture_size;
 	size_t		max_width;
-	const char	*dirgb[6];
-	bool		dirgb_flag[6];
+	const char	*map_properties[6];
+	bool		map_properties_frag[6];
 }	t_temp;
 
 //actions
-void			hooks_keys(t_game *game);
+void			set_hook(t_game *game);
 
 void			move_forward(t_player *player);
 void			move_backward(t_player *player);
@@ -213,29 +186,23 @@ int				initialize_game(t_game *game, char *map_path);
 
 void			init_img(t_game *game, t_img *image, int width, int height);
 void			init_xpm_img(t_game *game, t_img *image, char *path);
-void			initialize_img(t_img *image);
 
 void			init_player_vec(t_player *player);
 void			initialize_player(t_player *player);
 
+void			init_temp(t_temp *temp);
+
 void			init_ray(t_ray *ray, t_player *player, int x);
-void			initialize_ray(t_ray *ray);
 
 void			init_tex_ray(t_game *game, t_ray *ray, t_tex_ray *tex_ray);
-void			initialize_tex_ray(t_tex_ray *tex_ray);
 
 void			init_texinfo(t_game *game, t_texinfo *texinfo);
 void			initialize_texinfo(t_texinfo *texinfo);
 
-//exit
-void			free_exit(t_game *game, int status);
-int				finish_game(t_game *game);
-
 //map_check
-int				args_checker(int argc, char *argv[], t_temp *temp);
+int				check_map(int argc, char **argv, t_temp *temp);
 bool			check_textures_path(t_game *game);
-bool			xpm_file_check(char *path);
-bool			xpm_nl_check(char *path);
+bool			validate_xpm_path(char *path);
 bool			validate_map(t_temp *temp);
 bool			validate_round_player(char **temp_map);
 bool			validate_round_space(char **temp_map);
@@ -243,32 +210,27 @@ bool			validate_round_zero(char **temp_map);
 
 //render
 void			raycasting(t_game *game);
-void			render_view(t_game *game);
 void			render_raycasting(t_game *game);
-
-bool			is_hit_wall(t_game *game, t_ray *ray);
-
-int				render(t_game *game);
 
 //textures
 int				get_ceiling_color(t_game *game);
 int				get_floor_color(t_game *game);
-
 int				**get_wall_texture(t_game *game, t_ray *ray);
 int				get_wall_color(t_game *game, int **wall_tex,
 					t_tex_ray *tex_ray);
 
 //utils
-int				err_msg(char *msg, int status);
 void			print_mapinfo(t_mapinfo *mapinfo);
 void			put_player(t_player *player);
 void			put_ray(t_ray *ray);
 void			put_tex_ray(t_tex_ray *tex_ray);
 void			put_texinfo(t_texinfo *texinfo);
-void			init_temp(t_temp *temp);
 
+int				err_msg(char *msg, int status);
+void			free_exit(t_game *game, int status);
+int				finish_game(t_game *game);
 void			free_tab(void **tab);
-void			matomete_free(char **tab, char **spline, char *line,
+void			free_all(char **tab, char **spline, char *line,
 					char *message);
 
 #endif

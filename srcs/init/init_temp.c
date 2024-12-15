@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_temp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:03:17 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 18:01:15 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:32:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	init_temp(t_temp *temp)
 	temp->player_mapy = 0;
 	temp->texture_size = 64;
 	temp->max_width = 0;
-	temp->dirgb[0] = "NO";
-	temp->dirgb[1] = "WE";
-	temp->dirgb[2] = "SO";
-	temp->dirgb[3] = "EA";
-	temp->dirgb[4] = "C";
-	temp->dirgb[5] = "F";
-	temp->dirgb_flag[0] = false;
-	temp->dirgb_flag[1] = false;
-	temp->dirgb_flag[2] = false;
-	temp->dirgb_flag[3] = false;
-	temp->dirgb_flag[4] = false;
-	temp->dirgb_flag[5] = false;
+	temp->map_properties[0] = "NO";
+	temp->map_properties[1] = "WE";
+	temp->map_properties[2] = "SO";
+	temp->map_properties[3] = "EA";
+	temp->map_properties[4] = "C";
+	temp->map_properties[5] = "F";
+	temp->map_properties_flag[0] = false;
+	temp->map_properties_flag[1] = false;
+	temp->map_properties_flag[2] = false;
+	temp->map_properties_flag[3] = false;
+	temp->map_properties_flag[4] = false;
+	temp->map_properties_flag[5] = false;
 }

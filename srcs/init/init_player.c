@@ -3,29 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 15:10:41 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:35:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	initialize_player(t_player *player)
+{
+	player->direction = '\0';
+	player->map_x = 0.0;
+	player->map_y = 0.0;
+	player->x_vec_dir = 0.0;
+	player->y_vec_dir = 0.0;
+	player->vec_plane_x = 0.0;
+	player->vec_plane_y = 0.0;
+}
+
 static void	init_player_vec_ns(t_player *player)
 {
 	if (player->direction == 'N')
 	{
-		player->vec_dir_x = 0;
-		player->vec_dir_y = -1;
-		player->vec_plane_x = VIEWING_ANGLE;
+		player->x_vec_dir = 0;
+		player->y_vec_dir = -1;
+		player->vec_plane_x = FOV;
 		player->vec_plane_y = 0;
 	}
 	if (player->direction == 'S')
 	{
-		player->vec_dir_x = 0;
-		player->vec_dir_y = 1;
-		player->vec_plane_x = -VIEWING_ANGLE;
+		player->x_vec_dir = 0;
+		player->y_vec_dir = 1;
+		player->vec_plane_x = -FOV;
 		player->vec_plane_y = 0;
 	}
 }
@@ -34,40 +45,22 @@ static void	init_player_vec_ew(t_player *player)
 {
 	if (player->direction == 'E')
 	{
-		player->vec_dir_x = 1;
-		player->vec_dir_y = 0;
+		player->x_vec_dir = 1;
+		player->y_vec_dir = 0;
 		player->vec_plane_x = 0;
-		player->vec_plane_y = VIEWING_ANGLE;
+		player->vec_plane_y = FOV;
 	}
 	if (player->direction == 'W')
 	{
-		player->vec_dir_x = -1;
-		player->vec_dir_y = 0;
+		player->x_vec_dir = -1;
+		player->y_vec_dir = 0;
 		player->vec_plane_x = 0;
-		player->vec_plane_y = -VIEWING_ANGLE;
+		player->vec_plane_y = -FOV;
 	}
 }
 
-/**
- * put values in player info.
- * map_xy, direction are put in at the file analysis stage
- */
 void	init_player_vec(t_player *player)
 {
 	init_player_vec_ns(player);
 	init_player_vec_ew(player);
-}
-
-/**
- * Initialise player information.
- */
-void	initialize_player(t_player *player)
-{
-	player->direction = '\0';
-	player->map_x = 0.0;
-	player->map_y = 0.0;
-	player->vec_dir_x = 0.0;
-	player->vec_dir_y = 0.0;
-	player->vec_plane_x = 0.0;
-	player->vec_plane_y = 0.0;
 }

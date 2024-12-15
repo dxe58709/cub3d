@@ -32,5 +32,5 @@ valgrind --leak-check=full ./cub3D maps/leftS.cub
 valgrind --leak-check=full ./cub3D maps/rightW.cub
 valgrind --leak-check=full ./cub3D maps/topN.cub
 valgrind --leak-check=full ./cub3D maps/underN.cub
-valgrind --leak-check=full ./cub3D maps/less_dirgb1.cub
-valgrind --leak-check=full ./cub3D maps/less_dirgb2.cub
+valgrind --leak-check=full ./cub3D maps/less_property1.cub
+valgrind --leak-check=full ./cub3D maps/less_property2.cub

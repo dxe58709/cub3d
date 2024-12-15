@@ -3,28 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:58:06 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:49:55 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/**
- * Calculate data around the wall.
- * wall_dist Distance to wall
- * wall_height Height of the wall
- * wall_start_y Coordinates to start drawing the wall
- * wall_end_y Coordinates where the wall ends to be drawn.
- */
 static void	calculate_wall(t_ray *ray, t_game *game, t_player *player)
 {
 	if (ray->side == 0)
-		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
+		ray->wall_dist = (ray->distance_x - ray->x_cell_dist);
 	else
-		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
+		ray->wall_dist = (ray->distance_y - ray->y_cell_dist);
 	ray->wall_height = (int)(game->win_height / ray->wall_dist);
 	ray->wall_start_y = -(ray->wall_height) / 2 + game->win_height / 2;
 	if (ray->wall_start_y < 0)
@@ -33,10 +26,23 @@ static void	calculate_wall(t_ray *ray, t_game *game, t_player *player)
 	if (ray->wall_end_y >= game->win_height)
 		ray->wall_end_y = game->win_height - 1;
 	if (ray->side == 0)
-		ray->wall_x = player->map_y + ray->wall_dist * ray->vec_dir_y;
+		ray->wall_x = player->map_y + ray->wall_dist * ray->y_vec_dir;
 	else
-		ray->wall_x = player->map_x + ray->wall_dist * ray->vec_dir_x;
+		ray->wall_x = player->map_x + ray->wall_dist * ray->x_vec_dir;
 	ray->wall_x -= floor(ray->wall_x);
+}
+
+static bool	is_hit_wall(t_game *game, t_ray *ray)
+{
+	char	**map;
+
+	map = game->mapinfo.map;
+	if (ray->map_x < 0 || ray->map_x >= game->mapinfo.map_width
+		|| ray->map_y < 0 || ray->map_y >= game->mapinfo.map_height)
+		return (false);
+	if (map[ray->map_y][ray->map_x] == MAP_WALL)
+		return (true);
+	return (false);
 }
 
 /**
@@ -75,22 +81,22 @@ static void	run_dda(t_game *game, t_ray *ray)
 
 	while (1)
 	{
-		if (ray->sidedist_x < ray->sidedist_y)
+		if (ray->distance_x < ray->distance_y)
 		{
-			tmp = ray->map_x + ray->step_x;
+			tmp = ray->map_x + ray->next_x;
 			if (tmp < 0 || tmp >= game->mapinfo.map_width)
 				return ;
-			ray->sidedist_x += ray->deltadist_x;
-			ray->map_x += ray->step_x;
+			ray->distance_x += ray->x_cell_dist;
+			ray->map_x += ray->next_x;
 			ray->side = 0;
 		}
 		else
 		{
-			tmp = ray->map_y + ray->step_y;
+			tmp = ray->map_y + ray->next_y;
 			if (tmp < 0 || tmp >= game->mapinfo.map_width)
 				return ;
-			ray->sidedist_y += ray->deltadist_y;
-			ray->map_y += ray->step_y;
+			ray->distance_y += ray->y_cell_dist;
+			ray->map_y += ray->next_y;
 			ray->side = 1;
 		}
 		if (is_hit_wall(game, ray))
@@ -98,9 +104,6 @@ static void	run_dda(t_game *game, t_ray *ray)
 	}
 }
 
-/**
- * Put out rays of light for the width of the screen.
- */
 void	raycasting(t_game *game)
 {
 	t_ray	ray;

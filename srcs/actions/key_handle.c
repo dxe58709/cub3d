@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 17:41:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:42:19 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:32:13 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	key_press_handler(int key, t_game *game)
+static int	key_handle(int key, t_game *game)
 {
 	if (key == XK_Escape)
 		finish_game(game);
@@ -32,8 +32,8 @@ static int	key_press_handler(int key, t_game *game)
 	return (SUCCESS);
 }
 
-void	hooks_keys(t_game *game)
+void	set_hook(t_game *game)
 {
 	mlx_hook(game->win, ClientMessage, NoEventMask, finish_game, game);
-	mlx_hook(game->win, KeyPress, KeyPressMask, key_press_handler, game);
+	mlx_hook(game->win, KeyPress, KeyPressMask, key_handle, game);
 }

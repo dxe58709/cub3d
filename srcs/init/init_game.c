@@ -3,19 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:54:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:33:12 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/**
- * Create initial values for t_game.view_pixels
- * Allocate and store 640*480 int array
- */
+int	initialize_game(t_game *game, char *map_path)
+{
+	game->mlx = NULL;
+	game->win = NULL;
+	game->win_width = WIN_WIDTH;
+	game->win_height = WIN_HEIGHT;
+	game->view_pixels = NULL;
+	initialize_mapinfo(&game->mapinfo, map_path);
+	initialize_player(&game->player);
+	initialize_texinfo(&game->texinfo);
+	return (SUCCESS);
+}
+
 void	init_view_pixels(t_game *game)
 {
 	int	i;
@@ -35,20 +44,15 @@ void	init_view_pixels(t_game *game)
 	}
 }
 
-/**
- * The entire t_game structure.
- * All data necessary for processing, such as mapinfo, mlx, etc.,
-	are put in at this stage.
- */
 void	init_game(t_game *game, t_temp *temp)
 {
 	(void)temp;
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		free_exit(game, err_msg("mlx_init() Error.", ERROR));
+		free_exit(game, err_msg("Not initialize mlx", ERROR));
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!game->win)
-		free_exit(game, err_msg("mlx_new_window() Error.", ERROR));
+		free_exit(game, err_msg("Failed to create window", ERROR));
 	game->mapinfo.line_count = temp->map_count;
 	game->player.direction = temp->player_direction;
 	game->player.map_x = temp->player_mapx + 0.5;
@@ -59,20 +63,4 @@ void	init_game(t_game *game, t_temp *temp)
 	init_player_vec(&game->player);
 	init_view_pixels(game);
 	init_texinfo(game, &game->texinfo);
-}
-
-/**
- * Initialise the t_game structure.
- */
-int	initialize_game(t_game *game, char *map_path)
-{
-	game->mlx = NULL;
-	game->win = NULL;
-	game->win_width = WIN_WIDTH;
-	game->win_height = WIN_HEIGHT;
-	game->view_pixels = NULL;
-	initialize_mapinfo(&game->mapinfo, map_path);
-	initialize_player(&game->player);
-	initialize_texinfo(&game->texinfo);
-	return (SUCCESS);
 }

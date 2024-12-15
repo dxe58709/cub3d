@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:56:01 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:53:30 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ bool	validate_map(t_temp *temp)
 	}
 	if (validate_round_player(temp_map) || validate_round_space(temp_map)
 		|| validate_round_zero(temp_map))
-		return (close(fd), matomete_free(NULL, temp_map, NULL, ERR_MSG), 1);
+		return (close(fd), free_all(NULL, temp_map, NULL, ERR_MSG), 1);
 	return (close(fd), free_tab((void **)temp_map), 0);
 }

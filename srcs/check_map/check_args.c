@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:53:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:31:53 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// check Valgrind
-// check joutyou na code
-// norm
-// confirm .cub pattern
-// consider a.cub.cub pattern
-#include <stdio.h>
 
 static bool	check_rgb(char *c_line, char **spline, char *line)
 {
@@ -33,39 +26,39 @@ static bool	check_rgb(char *c_line, char **spline, char *line)
 	while (colors[++i])
 	{
 		if (i > 2)
-			return (matomete_free(colors, spline, line, ERR_RGB), 1);
+			return (free_all(colors, spline, line, ERR_RGB), 1);
 		j = -1;
 		while (++j < ft_strlen(colors[i]))
 		{
 			if (!ft_isdigit(colors[i][j]) || j > 2 || ft_atoi(colors[i]) > 255)
-				return (matomete_free(colors, spline, line, ERR_RGB), 1);
+				return (free_all(colors, spline, line, ERR_RGB), 1);
 		}
 	}
 	if (i < 2)
-		return (matomete_free(colors, spline, line, ERR_RGB), 1);
+		return (free_all(colors, spline, line, ERR_RGB), 1);
 	return (free_tab((void **)colors), 0);
 }
 
-static bool	check_dirgb(t_temp *temp, char **spline, char *line, int i)
+static bool	check_map_properties(t_temp *temp, char **spline, char *line, int i)
 {
 	if (!spline || !spline[0])
-		return (matomete_free(NULL, spline, line, ERR_DIRGB), 0);
+		return (free_all(NULL, spline, line, ERR_INFO), 0);
 	if (spline[0])
 	{
 		i = -1;
 		while (++i < 6)
 		{
-			if (!ft_strcmp(spline[0], temp->dirgb[i]) && !temp->dirgb_flag[i]
-				&& spline[1] && !spline[2] && ((i < 4
-						&& xpm_nl_check(spline[1])) || (i >= 4
-						&& check_rgb(spline[1], spline, line) == 0)))
+			if (!ft_strcmp(spline[0], temp->map_properties[i])
+				&& !temp->map_properties_flag[i] && spline[1] && !spline[2]
+				&& ((i < 4 && validate_xpm_path(spline[1])) || (i >= 4
+				&& check_rgb(spline[1], spline, line) == 0)))
 			{
-				temp->dirgb_flag[i] = true;
+				temp->map_properties_flag[i] = true;
 				return (free(line), free_tab((void **)spline), 1);
 			}
 		}
 	}
-	return (matomete_free(NULL, spline, line, ERR_DIRECTION), 0);
+	return (free_all(NULL, spline, line, ERR_DIRECTION), 0);
 }
 
 static bool	read_map(char *line, int count, t_temp *temp, size_t line_len)
@@ -75,19 +68,19 @@ static bool	read_map(char *line, int count, t_temp *temp, size_t line_len)
 	if (ft_strcmp(line, "\n") == 0)
 		return (free(line), (count >= 6));
 	if (count < 6)
-		return (check_dirgb(temp, ft_split(line, ' '), line, 0));
+		return (check_map_properties(temp, ft_split(line, ' '), line, 0));
 	if (ft_strchr("NEWS0", line[0]) || ft_strchr("NEWS0 ", line[line_len - 2]))
-		return (matomete_free(NULL, NULL, line, ERR_MAP), 0);
+		return (free_all(NULL, NULL, line, ERR_MAP), 0);
 	i = -1;
 	while (++i < (int)line_len)
 	{
 		if ((count == 6 && ft_strchr("NEWS0", line[i]))
 			|| (ft_strchr("NEWS01\n ", line[i]) == NULL))
-			return (matomete_free(NULL, NULL, line, ERR_MAP), 0);
+			return (free_all(NULL, NULL, line, ERR_MAP), 0);
 		if (ft_strchr("NEWS", line[i]))
 		{
 			if (temp->player_flag == true)
-				return (matomete_free(NULL, NULL, line, ERR_PLAYER), 0);
+				return (free_all(NULL, NULL, line, ERR_PLAYER), 0);
 			temp->player_direction = line[i];
 			temp->player_mapx = i;
 			temp->player_mapy = count - 6;
@@ -125,7 +118,7 @@ static int	check_filename(int argc, char *filename, t_temp *temp)
 	return (fd);
 }
 
-int	args_checker(int argc, char *argv[], t_temp *temp)
+int	check_map(int argc, char **argv, t_temp *temp)
 {
 	int		fd;
 	int		count;
@@ -147,7 +140,7 @@ int	args_checker(int argc, char *argv[], t_temp *temp)
 	temp->map_count = count;
 	count = -1;
 	while (++count < 6)
-		if (temp->dirgb[count] == false)
-			return (close(fd), free_exit(NULL, err_msg(ERR_DIRGB, 1)), ERROR);
+		if (temp->map_properties[count] == false)
+			return (close(fd), free_exit(NULL, err_msg(ERR_INFO, 1)), ERROR);
 	return (close(fd), validate_map(temp), SUCCESS);
 }

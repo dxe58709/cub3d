@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 17:55:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:53:07 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_dir(char *path)
+static bool	is_directory(char *path)
 {
 	int	fd;
 
@@ -36,11 +36,11 @@ static bool	is_xpm_file(char *path)
 	return (false);
 }
 
-bool	xpm_file_check(char *path)
+static bool	check_xpm_file(char *path)
 {
 	int	fd;
 
-	if (is_dir(path))
+	if (is_directory(path))
 		return (false);
 	if (!is_xpm_file(path))
 		return (false);
@@ -53,30 +53,30 @@ bool	xpm_file_check(char *path)
 
 bool	check_textures_path(t_game *game)
 {
-	if (!xpm_file_check(game->mapinfo.no_path))
+	if (!check_xpm_file(game->mapinfo.no_path))
 		return (false);
-	if (!xpm_file_check(game->mapinfo.so_path))
+	if (!check_xpm_file(game->mapinfo.so_path))
 		return (false);
-	if (!xpm_file_check(game->mapinfo.we_path))
+	if (!check_xpm_file(game->mapinfo.we_path))
 		return (false);
-	if (!xpm_file_check(game->mapinfo.ea_path))
+	if (!check_xpm_file(game->mapinfo.ea_path))
 		return (false);
 	return (true);
 }
 
-bool	xpm_nl_check(char *path)
+bool	validate_xpm_path(char *path)
 {
 	int		fd;
-	char	*trimedpath;
+	char	*new_path;
 
-	trimedpath = ft_strtrim(path, "\n");
-	if (is_dir(trimedpath))
-		return (free(trimedpath), false);
-	if (ft_strcmp(trimedpath + ft_strlen(trimedpath) - 4, ".xpm") != 0)
-		return (free(trimedpath), false);
-	fd = open(trimedpath, O_RDONLY);
+	new_path = ft_strtrim(path, "\n");
+	if (is_dir(new_path))
+		return (free(new_path), false);
+	if (ft_strcmp(trim_path + ft_strlen(new_path) - 4, ".xpm") != 0)
+		return (free(new_path), false);
+	fd = open(new_path, O_RDONLY);
 	if (fd == -1)
-		return (free(trimedpath), false);
+		return (free(new_path), false);
 	close(fd);
-	return (free(trimedpath), true);
+	return (free(new_path), true);
 }
