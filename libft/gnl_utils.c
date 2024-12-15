@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   gnl_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:50:12 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 15:11:04 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:36:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*f_strchr(char *s, int c)
+char	*gnl_strchr(char *s, int c)
 {
 	while (*s)
 	{
@@ -25,7 +25,7 @@ char	*f_strchr(char *s, int c)
 	return (s);
 }
 
-char	*f_strdup(char *s1)
+char	*gnl_strdup(char *s1)
 {
 	char	*copy;
 	int		i;
@@ -43,7 +43,7 @@ char	*f_strdup(char *s1)
 	return (copy);
 }
 
-char	*f_strjoin(char *s1, char *s2)
+char	*gnl_strjoin(char *s1, char *s2)
 {
 	char	*res;
 	size_t	i;
@@ -51,7 +51,7 @@ char	*f_strjoin(char *s1, char *s2)
 
 	i = 0;
 	if (s1 == NULL)
-		return (f_strdup(s2));
+		return (gnl_strdup(s2));
 	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:06 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 18:49:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:35:58 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_malloc_count(char *stock)
 	int	i;
 
 	i = 0;
-	if (f_strchr(stock, '\n') == NULL)
+	if (gnl_strchr(stock, '\n') == NULL)
 		return (ft_strlen(stock));
 	while (stock[i] != '\n' && stock[i] != '\0')
 		i++;
@@ -91,8 +91,8 @@ char	*get_next_line(int fd)
 	if ((read(fd, buffer, 0) == -1) || BUFFER_SIZE <= 0)
 		return (NULL);
 	ret = 1;
-	stock = f_strjoin(stock, buffer);
-	while (f_strchr(stock, '\n') == NULL && ret > 0)
+	stock = gnl_strjoin(stock, buffer);
+	while (gnl_strchr(stock, '\n') == NULL && ret > 0)
 	{
 		ret = read(fd, buffer, BUFFER_SIZE);
 		if (ret < 0)
@@ -101,7 +101,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		buffer[ret] = '\0';
-		stock = f_strjoin(stock, buffer);
+		stock = gnl_strjoin(stock, buffer);
 	}
 	return (ft_line_results(ret, stock, buffer));
 }

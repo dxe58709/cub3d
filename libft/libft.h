@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 12:47:29 by yushsato          #+#    #+#             */
-/*   Updated: 2024/12/15 15:13:47 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:36:36 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void			ft_putnbr_fd(int n, int fd);
 int				ft_strcmp(const char *s1, const char *s2);
 
 char			*get_next_line(int fd);
-char			*f_strchr(char *s, int c);
-char			*f_strdup(char *s1);
-char			*f_strjoin(char *s1, char *s2);
+char			*gnl_strchr(char *s, int c);
+char			*gnl_strdup(char *s1);
+char			*gnl_strjoin(char *s1, char *s2);
 
 #endif
