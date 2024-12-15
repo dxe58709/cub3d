@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/03 18:44:00 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:17:26 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 
 # define ERROR 1
 # define SUCCESS 0
@@ -52,7 +51,6 @@
 # define ERR_SPACE "' ' need walls"
 # define ERR_ZERO "'0' need walls"
 # define ERR_MLX "MLX"
-
 
 /**
  * Pixel editable image information.
@@ -111,10 +109,10 @@ typedef struct s_ray
 {
 	double		camera_x;
 	int			side;
-    
+
 	int			map_x;
 	int			map_y;
-    
+
 	int			step_x;
 	int			step_y;
 
@@ -190,7 +188,7 @@ typedef struct s_temp
 	size_t		max_width;
 	const char	*dirgb[6];
 	bool		dirgb_flag[6];
-}   t_temp;
+}	t_temp;
 
 //actions
 void			hooks_keys(t_game *game);
@@ -251,7 +249,6 @@ void			render_raycasting(t_game *game);
 bool			is_hit_wall(t_game *game, t_ray *ray);
 
 int				render(t_game *game);
-
 
 //textures
 int				get_ceiling_color(t_game *game);

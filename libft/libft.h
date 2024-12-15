@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 12:47:29 by yushsato          #+#    #+#             */
-/*   Updated: 2024/12/03 18:54:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:13:47 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,9 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 int				ft_strcmp(const char *s1, const char *s2);
 
-
 char			*get_next_line(int fd);
 char			*f_strchr(char *s, int c);
 char			*f_strdup(char *s1);
 char			*f_strjoin(char *s1, char *s2);
-
-# define ERR err_constructor
 
 #endif
