@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/12/15 22:54:06 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/12/16 14:49:39 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS =  srcs/main.c \
 		srcs/actions/move.c \
 		srcs/actions/rotate.c \
 		srcs/utils/debug.c \
-		srcs/utils/error.c \
+		srcs/utils/err_msg.c \
 		srcs/utils/free.c \
 		srcs/utils/free_utils.c \
 		srcs/init/init_game.c \

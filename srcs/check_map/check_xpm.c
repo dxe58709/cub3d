@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 19:53:07 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:44:40 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ bool	validate_xpm_path(char *path)
 	char	*new_path;
 
 	new_path = ft_strtrim(path, "\n");
-	if (is_dir(new_path))
+	if (is_directory(new_path))
 		return (free(new_path), false);
-	if (ft_strcmp(trim_path + ft_strlen(new_path) - 4, ".xpm") != 0)
+	if (ft_strcmp(new_path + ft_strlen(new_path) - 4, ".xpm") != 0)
 		return (free(new_path), false);
 	fd = open(new_path, O_RDONLY);
 	if (fd == -1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:03:17 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 19:23:33 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:50:24 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	put_tab_arr(int **tab_arr, int size, int max, char *name)
 
 void	put_ray(t_ray *ray)
 {
-	printf("RAY[%lf]: map(%d, %d) direction(%d, %d) dir(%lf, %lf) cell_dist(%lf,\
+	printf("RAY[%lf]: map(%d, %d) next_step(%d, %d) dir(%lf, %lf) cell_dist(%lf,\
  %lf) distance(%lf, %lf) wall(%d %lf) draw(%d ~ %d) wall_x(%lf)\n",
 		ray->camera_x,
 		ray->map_x,
 		ray->map_y,
-		ray->x_direction,
-		ray->y_direction,
+		ray->next_x,
+		ray->next_y,
 		ray->x_vec_dir,
 		ray->y_vec_dir,
 		ray->x_cell_dist,

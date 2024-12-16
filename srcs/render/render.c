@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 22:51:04 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:43:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	render_view(t_game *game)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(game->mlx, game->win, image.img, 0, 0);
-	mlx_destroy_image(game->mlx, image.img);
+	mlx_put_image_to_window(game->mlx, game->win, img.img, 0, 0);
+	mlx_destroy_image(game->mlx, img.img);
 }
 
 void	render_raycasting(t_game *game)

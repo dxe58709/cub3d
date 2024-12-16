@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 22:36:47 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:51:30 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ static void	init_ray_dda(t_ray *ray, t_player *player)
 {
 	if (ray->x_vec_dir < 0)
 	{
-		ray->x_direction = -1;
+		ray->next_x = -1;
 		ray->distance_x = (player->map_x - ray->map_x) * ray->x_cell_dist;
 	}
 	else
 	{
-		ray->x_direction = 1;
+		ray->next_x = 1;
 		ray->distance_x = (ray->map_x + 1.0 - player->map_x) * ray->x_cell_dist;
 	}
 	if (ray->y_vec_dir < 0)
 	{
-		ray->y_direction = -1;
+		ray->next_y = -1;
 		ray->distance_y = (player->map_y - ray->map_y) * ray->y_cell_dist;
 	}
 	else
 	{
-		ray->y_direction = 1;
+		ray->next_y = 1;
 		ray->distance_y = (ray->map_y + 1.0 - player->map_y) * ray->y_cell_dist;
 	}
 }

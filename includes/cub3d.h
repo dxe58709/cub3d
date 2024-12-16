@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 22:51:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:47:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ typedef struct s_ray
 	int			map_x;
 	int			map_y;
 
-	int			x_direction;
-	int			y_direction;
+	int			next_x;
+	int			next_y;
 
 	double		x_vec_dir;
 	double		y_vec_dir;
@@ -160,7 +160,7 @@ typedef struct s_temp
 	int			texture_size;
 	size_t		max_width;
 	const char	*map_properties[6];
-	bool		map_properties_frag[6];
+	bool		map_properties_flag[6];
 }	t_temp;
 
 //actions
