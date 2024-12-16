@@ -1,7 +1,7 @@
-NO textures/bookshelf.xpm
-SO textures/bookshelf.xpm
-EA textures/bookshelf.xpm
-WE textures/bookshelf.xpm
+NO textures/barrel.xpm
+SO textures/barrel.xpm
+EA textures/barrel.xpm
+WE textures/barrel.xpm
 
 F 0,255,0,0
 C 255,0,255

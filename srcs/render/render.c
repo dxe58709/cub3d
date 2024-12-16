@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/16 14:43:38 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:32:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ static void	render_view(t_game *game)
 	mlx_destroy_image(game->mlx, img.img);
 }
 
-void	render_raycasting(t_game *game)
+int	render_raycasting(t_game *game)
 {
 	init_view_pixels(game);
 	raycasting(game);
 	render_view(game);
+	return (0);
 }

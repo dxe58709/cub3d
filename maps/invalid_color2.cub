@@ -1,11 +1,11 @@
 
 
-NO textures/bookshelf.xpm
+NO textures/barrel.xpm
 C 225,30,a
 
-EA textures/bookshelf.xpm
-SO textures/bookshelf.xpm
-WE textures/bookshelf.xpm
+SO textures/barrel.xpm
+EA textures/barrel.xpm
+WE textures/barrel.xpm
 
 
 

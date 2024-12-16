@@ -1,10 +1,10 @@
-NO textures/bookshelf.xpm
-SO textures/bookshelf.xpm
-WE textures/bookshelf.xpm
-EA textures/bookshelf.xpm
+NO textures/greystone.xpm
+SO textures/greystone.xpm
+WE textures/greystone.xpm
+EA textures/greystone.xpm
 
-C 171,154,137
-F 139,99,58
+C 135,206,235
+F 139,150,58
 
 111111111111111
 111111000111111

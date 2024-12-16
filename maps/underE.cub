@@ -1,7 +1,7 @@
-NO textures/bookshelf.xpm
-SO textures/bookshelf.xpm
-WE textures/bookshelf.xpm
-EA textures/bookshelf.xpm
+NO textures/colorstone.xpm
+SO textures/colorstone.xpm
+WE textures/colorstone.xpm
+EA textures/colorstone.xpm
 
 C 171,154,137
 F 139,99,58
@@ -18,4 +18,4 @@ F 139,99,58
 111100000001111
 111110000011111
 111111000111111
-11111N111111111
+11111E111111111

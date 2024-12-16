@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   round_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 20:03:43 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:27:55 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	fill_round(char **temp_map, int i, size_t j, char round[8])
 	round[6] = temp_map[i + 1][j];
 	round[7] = temp_map[i + 1][j + 1];
 }
+
 
 bool	validate_round_player(char **temp_map)
 {

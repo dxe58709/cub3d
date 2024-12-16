@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/16 14:47:38 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:33:09 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ bool			validate_round_zero(char **temp_map);
 
 //render
 void			raycasting(t_game *game);
-void			render_raycasting(t_game *game);
+int				render_raycasting(t_game *game);
 
 //textures
 int				get_ceiling_color(t_game *game);
