@@ -1,7 +1,7 @@
-NO textures/barrel.xpm
-SO textures/barrel.xpm
-EA textures/barrel.xpm
-WE textures/barrel.xpm
+NO textures/koto_north.xpm
+SO textures/koto_south.xpm
+WE textures/koto_west.xpm
+EA textures/koto_east.xpm
 
 F 0,2247483648,255
 C 255,0,255

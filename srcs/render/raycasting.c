@@ -37,6 +37,7 @@ static bool	is_hit_wall(t_game *game, t_ray *ray)
 	char	**map;
 
 	map = game->mapinfo.map;
+	printf("mapx: %d, mapy: %d\n", ray->map_x, ray->map_y);
 	if (ray->map_x < 0 || ray->map_x >= game->mapinfo.map_width
 		|| ray->map_y < 0 || ray->map_y >= game->mapinfo.map_height)
 		return (false);
@@ -75,6 +76,7 @@ static void	set_ray_pixels(t_game *game, t_ray *ray, int x)
  * ray.side Which wall in the x or y axis was hit If side=0,
 	the wall in the x axis
  */
+
 static void	run_dda(t_game *game, t_ray *ray)
 {
 	int	tmp;

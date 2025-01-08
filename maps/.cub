@@ -1,7 +1,7 @@
-NO textures/bookshelf.xpm
-SO textures/bookshelf.xpm
-WE textures/bookshelf.xpm
-EA textures/bookshelf.xpm
+NO textures/koto_north.xpm
+SO textures/koto_south.xpm
+WE textures/koto_west.xpm
+EA textures/koto_east.xpm
 
 C 171,154,137
 F 139,99,58
