@@ -1,7 +1,7 @@
-NO textures/bookshelf.xpm
+NO textures/greystone.xpm
+WE textures/eagle.xpm
+EA textures/colorstone.xpm
 SO textures/bookshelf.xpm
-WE textures/bookshelf.xpm
-EA textures/bookshelf.xpm
 
 C 171,154,137
 F 139,99,58

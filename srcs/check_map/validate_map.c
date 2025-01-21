@@ -38,7 +38,7 @@ static int	copy_line_to_map(char **temp_map, char *line, int i)
 		temp_map[i][j + 1] = line[j];
 		j++;
 	}
-	temp_map[i][j + 1] = '\0'; // 行の終端にヌル文字を追加
+	temp_map[i][j + 1] = '\0';
 	return (i + 1);
 }
 
