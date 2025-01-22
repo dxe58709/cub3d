@@ -37,14 +37,12 @@ static bool	is_hit_wall(t_game *game, t_ray *ray)
 	char	**map;
 
 	map = game->mapinfo.map;
+	printf("map[%d][%d] = %c\n", ray->map_y, ray->map_x, map[ray->map_y][ray->map_x]);
 	if (ray->map_x < 0 || ray->map_x >= game->mapinfo.map_width
 		|| ray->map_y < 0 || ray->map_y >= game->mapinfo.map_height)
 		return (false);
 	if (map[ray->map_y][ray->map_x] == '1')
-	{
-		printf("map[%d][%d] = %c\n", ray->map_y, ray->map_x, map[ray->map_y][ray->map_x]);
 		return (true);
-	}
 	return (false);
 }
 

@@ -44,7 +44,6 @@ SRCS =  srcs/main.c \
 		srcs/render/render.c \
 		srcs/render/floor.c \
 		srcs/render/wall.c \
-		srcs/check_map/check_args.c \
 		srcs/check_map/check_map.c \
 		srcs/check_map/check_xpm.c \
 		srcs/check_map/round_map.c \
