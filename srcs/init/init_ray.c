@@ -33,6 +33,7 @@ static void	initialize_ray(t_ray *ray)
 
 static int	calculate_next_x_direction(t_ray *ray, t_player *player)
 {
+printf("\nray->map_x: %d, player->map_x; %f,\n x_cell_dist; %f, distance_x: %.2f\n\n", ray->map_x, player->map_x, ray->x_cell_dist, ray->distance_x);
 	if (ray->x_vec_dir < 0)
 	{
 		ray->distance_x = (player->map_x - ray->map_x)
@@ -41,6 +42,7 @@ static int	calculate_next_x_direction(t_ray *ray, t_player *player)
 	}
 	ray->distance_x = (ray->map_x + 1.0
 			- player->map_x) * ray->x_cell_dist;
+
 	return (1);
 }
 

@@ -37,7 +37,6 @@ static bool	is_hit_wall(t_game *game, t_ray *ray)
 	char	**map;
 
 	map = game->mapinfo.map;
-	printf("map[%d][%d] = %c\n", ray->map_y, ray->map_x, map[ray->map_y][ray->map_x]);
 	if (ray->map_x < 0 || ray->map_x >= game->mapinfo.map_width
 		|| ray->map_y < 0 || ray->map_y >= game->mapinfo.map_height)
 		return (false);
@@ -115,6 +114,7 @@ void	raycasting(t_game *game)
 	while (x < game->win_width)
 	{
 		init_ray(&ray, &game->player, x);
+	//printf("map[%d][%d]\n", ray.map_y, ray.map_x);
 		run_dda(game, &ray);
 		calculate_wall(&ray, game, &game->player);
 		set_ray_pixels(game, &ray, x);
