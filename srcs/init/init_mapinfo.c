@@ -108,5 +108,6 @@ int	init_mapinfo(t_mapinfo *mapinfo, t_temp *temp, int count)
 	}
 	mapinfo->map = map;
 	mapinfo->map_width = max_width;
-	return (close(fd), SUCCESS);
+	close(fd);
+	return (SUCCESS);
 }

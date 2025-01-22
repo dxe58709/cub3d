@@ -31,28 +31,30 @@ static void	initialize_ray(t_ray *ray)
 	ray->wall_x = 0.0;
 }
 
-static void	init_ray_dda(t_ray *ray, t_player *player)
+static int	calculate_next_x_direction(t_ray *ray, t_player *player)
 {
 	if (ray->x_vec_dir < 0)
 	{
-		ray->next_x = -1;
-		ray->distance_x = (player->map_x - ray->map_x) * ray->x_cell_dist;
+		ray->distance_x = (player->map_x - ray->map_x)
+			* ray->x_cell_dist;
+		return (-1);
 	}
-	else
-	{
-		ray->next_x = 1;
-		ray->distance_x = (ray->map_x + 1.0 - player->map_x) * ray->x_cell_dist;
-	}
+	ray->distance_x = (ray->map_x + 1.0
+			- player->map_x) * ray->x_cell_dist;
+	return (1);
+}
+
+static int	calculate_next_y_direction(t_ray *ray, t_player *player)
+{
 	if (ray->y_vec_dir < 0)
 	{
-		ray->next_y = -1;
-		ray->distance_y = (player->map_y - ray->map_y) * ray->y_cell_dist;
+		ray->distance_y = (player->map_y - ray->map_y)
+			* ray->y_cell_dist;
+		return (-1);
 	}
-	else
-	{
-		ray->next_y = 1;
-		ray->distance_y = (ray->map_y + 1.0 - player->map_y) * ray->y_cell_dist;
-	}
+	ray->distance_y = (ray->map_y + 1.0
+			- player->map_y) * ray->y_cell_dist;
+	return (1);
 }
 
 void	init_ray(t_ray *ray, t_player *player, int x)
@@ -65,5 +67,6 @@ void	init_ray(t_ray *ray, t_player *player, int x)
 	ray->map_y = (int)player->map_y;
 	ray->x_cell_dist = fabs(1 / ray->x_vec_dir);
 	ray->y_cell_dist = fabs(1 / ray->y_vec_dir);
-	init_ray_dda(ray, player);
+	ray->next_x = calculate_next_x_direction(ray, player);
+	ray->next_y = calculate_next_y_direction(ray, player);
 }

@@ -37,12 +37,14 @@ static bool	is_hit_wall(t_game *game, t_ray *ray)
 	char	**map;
 
 	map = game->mapinfo.map;
-	printf("mapx: %d, mapy: %d\n", ray->map_x, ray->map_y);
 	if (ray->map_x < 0 || ray->map_x >= game->mapinfo.map_width
 		|| ray->map_y < 0 || ray->map_y >= game->mapinfo.map_height)
 		return (false);
-	if (map[ray->map_y][ray->map_x] == MAP_WALL)
+	if (map[ray->map_y][ray->map_x] == '1')
+	{
+		printf("map[%d][%d] = %c\n", ray->map_y, ray->map_x, map[ray->map_y][ray->map_x]);
 		return (true);
+	}
 	return (false);
 }
 
@@ -95,7 +97,7 @@ static void	run_dda(t_game *game, t_ray *ray)
 		else
 		{
 			tmp = ray->map_y + ray->next_y;
-			if (tmp < 0 || tmp >= game->mapinfo.map_width)
+			if (tmp < 0 || tmp >= game->mapinfo.map_height)
 				return ;
 			ray->distance_y += ray->y_cell_dist;
 			ray->map_y += ray->next_y;

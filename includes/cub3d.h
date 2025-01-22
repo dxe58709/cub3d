@@ -34,8 +34,6 @@
 # define ROT_SPEED 0.05
 # define TEX_SIZE 64
 
-# define MAP_WALL '1'
-
 # define ERR_USAGE "Usage: ./cub3D <path/to/map.cub>"
 # define ERR_MALLOC "Failed to malloc"
 # define ERR_ARGMAP "Confirm map name or map path"
