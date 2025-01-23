@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2025/01/23 15:42:20 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:03:16 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ static void	run_dda(t_game *game, t_ray *ray)
 
 	while (1)
 	{
+//printf("Checking position: %c\n", game->mapinfo.map[ray->map_y][ray->map_x]);
 		if (ray->distance_x < ray->distance_y)
 		{
 			tmp = ray->map_x + ray->next_x;

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2025/01/23 15:28:09 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:07:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,14 +163,6 @@ typedef struct s_temp
 
 //actions
 void			set_hook(t_game *game);
-
-void			move_forward(t_player *player);
-void			move_backward(t_player *player);
-void			move_right(t_player *player);
-void			move_left(t_player *player);
-
-void			rotate_left(t_player *player);
-void			rotate_right(t_player *player);
 
 //inits
 int				new_init_mapinfo(t_game *game, t_mapinfo *mapinfo,
