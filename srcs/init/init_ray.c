@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/16 14:51:30 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:46:57 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	initialize_ray(t_ray *ray)
 
 static int	calculate_next_x_direction(t_ray *ray, t_player *player)
 {
-printf("\nray->map_x: %d, player->map_x; %f,\n x_cell_dist; %f, distance_x: %.2f\n\n", ray->map_x, player->map_x, ray->x_cell_dist, ray->distance_x);
+//printf("\nray->map_x: %d, player->map_x; %f,\n x_cell_dist; %f, distance_x: %.2f\n\n", ray->map_x, player->map_x, ray->x_cell_dist, ray->distance_x);
 	if (ray->x_vec_dir < 0)
 	{
 		ray->distance_x = (player->map_x - ray->map_x)

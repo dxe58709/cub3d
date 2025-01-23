@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 17:41:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/16 18:31:35 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:28:01 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	key_handle(int key, t_game *game)
 		rotate_left(&game->player);
 	if (key == XK_Right)
 		rotate_right(&game->player);
-	//render_raycasting(game);
 	return (SUCCESS);
 }
 

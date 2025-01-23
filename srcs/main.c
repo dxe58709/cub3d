@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:34:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/16 18:31:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:43:41 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 		return (ERROR);
 	initialize_game(&game, argv[1]);
 	init_game(&game, &temp);
-	//render_raycasting(&game);
 	set_hook(&game);
 	mlx_loop_hook(game.mlx, render_raycasting, &game);
 	mlx_loop(game.mlx);

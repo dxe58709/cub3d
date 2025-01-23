@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/16 17:40:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:42:20 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,12 @@ static bool	is_hit_wall(t_game *game, t_ray *ray)
 	if (ray->map_x < 0 || ray->map_x >= game->mapinfo.map_width
 		|| ray->map_y < 0 || ray->map_y >= game->mapinfo.map_height)
 		return (false);
+
 	if (map[ray->map_y][ray->map_x] == '1')
+	{
+//printf("map[%d][%d] = %d\n", ray->map_y, ray->map_x, map[ray->map_y][ray->map_x]);
 		return (true);
+	}
 	return (false);
 }
 
