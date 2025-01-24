@@ -12,37 +12,12 @@
 
 #include "cub3d.h"
 
-void			rotate_left(t_player *player);
-void			rotate_right(t_player *player);
-/*
-void			move_forward(t_player *player);
-void			move_backward(t_player *player);
-void			move_right(t_player *player);
-void			move_left(t_player *player);
-
-static int	key_handle(int key, t_game *game)
-{
-	if (key == XK_Escape)
-		finish_game(game);
-	if (key == XK_w)
-		move_forward(&game->player);
-	if (key == XK_a)
-		move_left(&game->player);
-	if (key == XK_s)
-		move_backward(&game->player);
-	if (key == XK_d)
-		move_right(&game->player);
-	if (key == XK_Left)
-		rotate_left(&game->player);
-	if (key == XK_Right)
-		rotate_right(&game->player);
-	return (SUCCESS);
-}
-*/
 void	move_forward(t_player *player, t_game *game);
 void	move_backward(t_player *player, t_game *game);
 void	move_left(t_player *player, t_game *game);
 void	move_right(t_player *player, t_game *game);
+void	rotate_left(t_player *player);
+void	rotate_right(t_player *player);
 
 static int	key_handle(int key, t_game *game)
 {

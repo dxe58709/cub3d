@@ -50,8 +50,8 @@ static bool	check_map_properties(t_temp *temp, char **spline, char *line, int i)
 		{
 			if (!ft_strcmp(spline[0], temp->map_properties[i])
 				&& !temp->map_properties_flag[i] && spline[1] && !spline[2]
-				&& ((i < 4 && validate_xpm_path(spline[1])) || (i >= 4
-				&& check_rgb(spline[1], spline, line) == 0)))
+				&& ((i < 4 && validate_xpm_path(spline[1]))
+					|| (i >= 4 && check_rgb(spline[1], spline, line) == 0)))
 			{
 				temp->map_properties_flag[i] = true;
 				return (free(line), free_tab((void **)spline), 1);
