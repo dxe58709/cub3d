@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/12/15 22:31:53 by nsakanou         ###   ########.fr       */
+/*   Updated: 2025/01/25 20:50:36 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,16 +125,17 @@ int	check_map(int argc, char **argv, t_temp *temp)
 	char	*line;
 
 	fd = check_filename(argc, argv[1], temp);
-	if (fd == -1)
-		return (-1);
 	count = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		if (ft_strcmp(line, "\n"))
 			count++;
 		if (temp->max_width < ft_strlen(line))
 			temp->max_width = ft_strlen(line);
 		read_map(line, count - 1, temp, ft_strlen(line));
+		free(line);
+		line = get_next_line(fd);
 	}
 	if (count < 6 || temp->player_flag == false)
 		return (close(fd), free_exit(NULL, err_msg(ERR_MAP, 1)), ERROR);
