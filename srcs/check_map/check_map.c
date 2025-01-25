@@ -134,7 +134,6 @@ int	check_map(int argc, char **argv, t_temp *temp)
 		if (temp->max_width < ft_strlen(line))
 			temp->max_width = ft_strlen(line);
 		read_map(line, count - 1, temp, ft_strlen(line));
-		free(line);
 		line = get_next_line(fd);
 	}
 	if (count < 6 || temp->player_flag == false)
