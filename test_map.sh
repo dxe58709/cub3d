@@ -1,5 +1,11 @@
 #only test invalid maps
 
+valgrind ./cub3D maps/.cub
+valgrind ./cub3D maps/a.cub.cub
+valgrind ./cub3D maps/cub
+valgrind ./cub3D maps/invalid_color1.cub
+valgrind ./cub3D maps/invalid_color2.cub
+valgrind ./cub3D maps/invalid_color3.cub
 valgrind ./cub3D maps/invalidmap_direct_2xpm.cub
 valgrind ./cub3D maps/invalidmap_doubledirect.cub
 valgrind ./cub3D maps/invalidmap_dupplayer.cub
@@ -8,21 +14,23 @@ valgrind ./cub3D maps/invalidmap_empty.cub
 valgrind ./cub3D maps/invalidmap_minus.cub
 valgrind ./cub3D maps/invalidmap_newline.cub
 valgrind ./cub3D maps/invalidmap_noplayer.cub
-valgrind ./cub3D maps/invalidmap_noplayer.cub
-valgrind ./cub3D maps/invalidmap_space.cub
-valgrind ./cub3D maps/invalidmap.cbu
+valgrind ./cub3D maps/invalidmap_nowall_bottom.cub
 valgrind ./cub3D maps/invalidmap_nowall_left.cub
 valgrind ./cub3D maps/invalidmap_nowall_right.cub
 valgrind ./cub3D maps/invalidmap_nowall_top.cub
-valgrind ./cub3D maps/invalidmap_nowall_bottom.cub
-valgrind ./cub3D maps/.cub
-valgrind ./cub3D maps/a.cub.cub
-valgrind ./cub3D maps/cub
-valgrind ./cub3D maps/hanarekojima1.cub
-valgrind ./cub3D maps/hanarekojima2.cub
-valgrind ./cub3D maps/hanarekojima3.cub
-valgrind ./cub3D maps/hanarekojima4.cub
+valgrind ./cub3D maps/invalidmap_space.cub
+valgrind ./cub3D maps/invalidmap.cbu
 valgrind ./cub3D maps/leftS.cub
+valgrind ./cub3D maps/less_property1.cub
+valgrind ./cub3D maps/less_property2.cub
+valgrind ./cub3D maps/no_map1.cub
+valgrind ./cub3D maps/no_map2.cub
+valgrind ./cub3D maps/no_map3.cub
+valgrind ./cub3D maps/no_map4.cub
+valgrind ./cub3D maps/no_player1.cub
+valgrind ./cub3D maps/no_player2.cub
+valgrind ./cub3D maps/no_player3.cub
+valgrind ./cub3D maps/no_player4.cub
 valgrind ./cub3D maps/rightW.cub
 valgrind ./cub3D maps/topN.cub
-valgrind ./cub3D maps/underN.cub
+valgrind ./cub3D maps/underE.cub
